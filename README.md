@@ -1,64 +1,398 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Movie Browser Application
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A modern web application for browsing and managing favorite movies using the OMDB API. Built with Laravel 8 and PHP 8.
 
-## About Laravel
+## ✨ Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- ✅ **User Authentication** - Secure login system with session management
+- ✅ **Movie Search** - Search movies by title, type, and year using OMDB API
+- ✅ **Infinite Scroll** - Automatic loading of more movies as you scroll
+- ✅ **Lazy Loading** - Images load progressively for better performance
+- ✅ **Favorites Management** - Add and remove movies from your favorites collection
+- ✅ **Movie Details** - View comprehensive information including ratings, cast, and plot
+- ✅ **Multi-language** - Switch between English and Indonesian
+- ✅ **Responsive Design** - Works perfectly on mobile, tablet, and desktop
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🛠 Tech Stack
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+**Backend:**
+- Laravel 8.x
+- PHP 8.0+
+- MySQL 5.7+
 
-## Learning Laravel
+**Frontend:**
+- Bootstrap 5.1.3
+- jQuery 3.6.0
+- Font Awesome 6.0
+- Vanilla LazyLoad
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+**External API:**
+- OMDB API (http://www.omdbapi.com/)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 💻 Requirements
 
-## Laravel Sponsors
+- PHP >= 8.0
+- Composer >= 2.0
+- MySQL >= 5.7 or 8.0
+- Node.js >= 14.x
+- NPM >= 6.x
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+**Required PHP Extensions:**
+- OpenSSL, PDO, Mbstring, Tokenizer, XML, Ctype, JSON, BCMath, Fileinfo
 
-### Premium Partners
+## 📦 Installation
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+### 1. Extract Files
 
-## Contributing
+Extract the zip file to your desired location:
+```bash
+cd /path/to/your/webserver
+unzip movie-browser.zip
+cd movie-browser
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 2. Install Dependencies
 
-## Code of Conduct
+**PHP Dependencies:**
+```bash
+composer install
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+**Node Dependencies:**
+```bash
+npm install
+```
 
-## Security Vulnerabilities
+### 3. Environment Configuration
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Copy environment file:
+```bash
+cp .env.example .env
+```
 
-## License
+Generate application key:
+```bash
+php artisan key:generate
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Edit `.env` file and configure your settings:
+```env
+APP_NAME="Movie Browser"
+APP_ENV=local
+APP_DEBUG=true
+APP_URL=http://localhost
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=movie_browser
+DB_USERNAME=root
+DB_PASSWORD=
+
+OMDB_API_KEY=your_api_key_here
+```
+
+### 4. Get OMDB API Key
+
+1. Visit: http://www.omdbapi.com/apikey.aspx
+2. Select **FREE** tier (1,000 requests/day)
+3. Enter your email
+4. Check your email for the API key
+5. Add the key to your `.env` file
+
+### 5. Setup Database
+
+**Create database:**
+```bash
+mysql -u root -p
+CREATE DATABASE movie_browser CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+EXIT;
+```
+
+**Or using phpMyAdmin:**
+1. Open phpMyAdmin
+2. Click "New" database
+3. Name: `movie_browser`
+4. Collation: `utf8mb4_unicode_ci`
+5. Click "Create"
+
+**Run migrations and seeders:**
+```bash
+php artisan migrate --seed
+```
+
+### 6. Setup Storage
+```bash
+php artisan storage:link
+```
+
+### 7. Compile Assets
+
+**For development:**
+```bash
+npm run dev
+```
+
+**For production:**
+```bash
+npm run production
+```
+
+### 8. Run Application
+```bash
+php artisan serve
+```
+
+Visit: **http://localhost:8000**
+
+### 9. Login
+
+Use these credentials:
+- **Username:** `tes`
+- **Password:** `tes`
+
+## 📁 Project Structure
+```
+movie-browser/
+├── app/
+│   ├── Http/Controllers/      # Application controllers
+│   ├── Models/                # Database models
+│   └── Services/              # OMDB API integration
+├── database/
+│   ├── migrations/            # Database schema
+│   └── seeders/               # Database seeders
+├── resources/
+│   ├── lang/                  # Language files (EN/ID)
+│   └── views/                 # Blade templates
+├── routes/
+│   └── web.php               # Application routes
+└── .env                      # Environment configuration
+```
+
+## 🔧 Configuration
+
+### Database Setup (MySQL 8.0+)
+
+If you encounter authentication errors with MySQL 8.0+:
+```sql
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'your_password';
+FLUSH PRIVILEGES;
+```
+
+### File Permissions
+
+**Linux/Mac:**
+```bash
+chmod -R 775 storage
+chmod -R 775 bootstrap/cache
+```
+
+**Or:**
+```bash
+sudo chown -R www-data:www-data storage boottrap/cache
+sudo chmod -R 775 storage bootstrap/cache
+```
+
+### Clear Cache
+```bash
+php artisan cache:clear
+php artisan config:clear
+php artisan route:clear
+php artisan view:clear
+```
+
+## 🚀 Deployment to InfinityFree
+
+### 1. Prepare Files
+
+Build production assets:
+```bash
+npm run production
+```
+
+### 2. Upload Files
+
+1. Login to InfinityFree cPanel
+2. Open **File Manager**
+3. Navigate to `htdocs` folder
+4. Upload all project files except:
+   - `node_modules/`
+   - `.git/`
+   - `storage/logs/*`
+
+### 3. Setup Database
+
+1. Go to **MySQL Databases** in cPanel
+2. Create new database
+3. Create database user
+4. Add user to database with all privileges
+5. Note: `database name`, `username`, `password`
+
+### 4. Configure Environment
+
+Edit `.env` file via File Manager or FTP:
+```env
+APP_ENV=production
+APP_DEBUG=false
+APP_URL=http://yourdomain.infinityfreeapp.com
+
+DB_CONNECTION=mysql
+DB_HOST=sqlxxx.infinityfreeapp.com
+DB_PORT=3306
+DB_DATABASE=your_database_name
+DB_USERNAME=your_database_user
+DB_PASSWORD=your_database_password
+
+OMDB_API_KEY=your_api_key
+```
+
+### 5. Update .htaccess
+
+Create/edit `.htaccess` in root directory:
+```apache
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
+```
+
+### 6. Run Setup Commands
+
+**Via cPanel Terminal or SSH:**
+```bash
+cd htdocs
+php artisan migrate --force
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+```
+
+**If terminal not available**, import database manually:
+1. Export local database: `mysqldump -u root -p movie_browser > database.sql`
+2. Upload via phpMyAdmin
+3. Import the SQL file
+
+### 7. Set Permissions
+```bash
+chmod -R 775 storage
+chmod -R 775 bootstrap/cache
+```
+
+## 🎯 Usage Guide
+
+### Searching Movies
+
+1. Go to **Movie List** page
+2. Enter movie title (default: "movie")
+3. **Optional:** Select type and year filters
+4. Click **Search** or press Enter
+5. Scroll down to load more results automatically
+
+### Managing Favorites
+
+**Add Favorite:**
+- Click the heart icon ❤️ on any movie card
+- Or click "Add to Favorites" on detail page
+
+**Remove Favorite:**
+- Click the filled heart icon ❤️ again
+- Or remove from **My Favorites** page
+
+**View Favorites:**
+- Click **My Favorites** in navigation menu
+
+### Changing Language
+
+1. Click the globe icon 🌐 in navigation
+2. Select **English** or **Indonesia**
+3. All interface text will update
+
+## 🐛 Troubleshooting
+
+### Common Issues
+
+**1. "Class not found" Error**
+```bash
+composer dump-autoload
+```
+
+**2. Database Connection Failed**
+- Check `.env` database credentials
+- Ensure database exists
+- Verify MySQL is running
+
+**3. Storage Permission Errors**
+```bash
+chmod -R 775 storage bootstrap/cache
+```
+
+**4. NPM/Node Errors**
+```bash
+rm -rf node_modules package-lock.json
+npm cache clean --force
+npm install
+```
+
+**5. OMDB API Not Working**
+- Verify API key in `.env`
+- Check daily limit (1000 requests/day)
+- Test API: `curl "http://www.omdbapi.com/?apikey=YOUR_KEY&s=movie"`
+
+**6. Images Not Loading**
+- Check internet connection
+- Verify LazyLoad JS is loaded
+- Check browser console for errors
+
+**7. Infinite Scroll Not Working**
+- Clear browser cache
+- Check JavaScript console
+- Verify `#scroll-sentinel` element exists
+
+## 📚 Libraries Used
+
+| Library | Version | Purpose |
+|---------|---------|---------|
+| Laravel | 8.x | PHP Framework |
+| Guzzle | 7.x | HTTP Client for API |
+| Bootstrap | 5.1.3 | CSS Framework |
+| jQuery | 3.6.0 | JavaScript Library |
+| Font Awesome | 6.0.0 | Icons |
+| Vanilla LazyLoad | 17.8.3 | Image Lazy Loading |
+
+## 🏗 Architecture
+
+**Design Pattern:** MVC + Service Layer
+
+- **Controllers:** Handle HTTP requests and responses
+- **Models:** Database interaction via Eloquent ORM
+- **Views:** Blade templates for UI
+- **Services:** Business logic (OMDB API integration)
+- **Middleware:** Request filtering (authentication, locale)
+
+## 🔒 Security Features
+
+- ✅ CSRF Protection
+- ✅ Password Hashing (Bcrypt)
+- ✅ SQL Injection Prevention (Eloquent ORM)
+- ✅ XSS Protection (Blade escaping)
+- ✅ Session-based Authentication
+- ✅ Input Validation
+
+## ⚡ Performance Features
+
+- ✅ API Response Caching (1 hour)
+- ✅ Image Lazy Loading
+- ✅ Infinite Scroll Pagination
+- ✅ Database Query Optimization
+- ✅ Asset Minification
+
+## 📄 License
+
+This project is developed for technical test purposes.
+
+---
+
+**Built with Laravel 8 + PHP 8**
+
+For questions or issues, please refer to the troubleshooting section above.
+
